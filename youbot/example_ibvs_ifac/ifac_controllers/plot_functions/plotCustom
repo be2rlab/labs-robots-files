@@ -1,0 +1,28 @@
+function plotCustom(s, what, var, style, color, offset)
+    joints = [1,2,3,4,5];
+    ax_font_size = 20;
+    ax_lines_width = 1.0;
+    lable_font_size = 25;
+    leg_font_size = 15;
+    plot_line_width = 1;
+    hold on
+        leg = legend( 'Interpreter', 'latex'); leg.FontSize = leg_font_size;
+        k = 1 + offset;
+        for j = joints
+            p = plot(what.Time, what.Data(:, j), color);
+            p.LineWidth = plot_line_width + j * 0.4;
+            p.LineStyle = style;
+
+            leg.String{k} = "$"+ var +"_{" + j + "}$";
+            k = k + 1;
+        end
+    hold off
+    grid on; % grid minor;
+    s.FontSize = ax_font_size; s.LineWidth = ax_lines_width;
+    x = xlabel("$t$", 'Interpreter', 'latex'); x.FontSize = lable_font_size;
+    if offset > 0
+        y = ylabel("", 'Interpreter', 'latex'); y.FontSize = lable_font_size;
+    else 
+         y = ylabel("$"+ var +"$", 'Interpreter', 'latex'); y.FontSize = lable_font_size;
+    end 
+end

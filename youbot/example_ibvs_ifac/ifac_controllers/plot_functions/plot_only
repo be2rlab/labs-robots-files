@@ -1,0 +1,17 @@
+controller_title = "pd";
+plotCustom_v3(ws1, controller_title, 1);
+
+controller_title = "pdg";
+plotCustom_v3(ws2, controller_title, 1);
+
+controller_title = "ctorque";
+plotCustom_v3(ws3, controller_title, 1);
+
+controller_title = "tdc";
+plotCustom_v3(ws4, controller_title, 1);
+
+
+for i = 1:5
+    f = figure();
+    s = subplot(3,1,1);
+    ws1.q.Data(:,i);
